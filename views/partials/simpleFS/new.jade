@@ -1,0 +1,4 @@
+form(ng-controller='NewController')
+  input(ng-model="options.directory")
+  button(ng-click="update(options)")
+  {{ options | json }}

@@ -1,0 +1,262 @@
+/*
+*
+* BREAKPOINT
+*
+*/
+$largeWidth:900px;
+$smallWidth: 800px;
+$breakHeight: 480px;
+
+/*
+*
+* MIXINS
+*
+*/
+@mixin calc($property, $expression) { 
+  #{$property}: -webkit-calc(#{$expression}); 
+  #{$property}: calc(#{$expression}); 
+} 
+
+/*
+*
+* COLOR 
+*
+*/
+$black:rgb(0,0,0);
+$teal-dark: rgb(0,64,64);
+$teal-dull: rgba(0,64,64,0.5);
+$teal-pale: rgba(0,64,64,0.25);
+$teal-white: rgba(0,64,64,0);
+
+/*
+*
+* DOM
+*
+*/
+body {
+	margin:0px;
+	width:100%;
+	height:100%;
+	overflow:hidden;
+	background-color:$teal-white;
+	font-family: 'Roboto', sans-serif;
+	
+	@media(max-width:$smallWidth){
+		overflow-x:scroll;
+	}	
+}
+
+#header{
+	width:100%;
+	background-color:$teal-dark;
+	border:1px solid #231F20;
+	height:120px;
+	
+	@media (max-height: $breakHeight){
+		height:88px;
+	}
+
+	
+	#headWrapper{
+		height:100%;
+		width:800px;
+		margin:0px auto;
+		color:#fff;
+		
+		a {
+			cursor:pointer;
+		}
+		
+		
+		#logo {
+			margin-left:33px;
+			line-height:108px;
+			font-size: 60px;
+			text-decoration:none; 
+			color:#fff;
+			
+			@media (max-height: $breakHeight){
+				font-size: 24px;				
+				line-height:88px;
+			}
+		}
+		
+		#user {
+			float: right;
+			margin-right:33px;
+			margin-top: 47px;	
+			text-decoration:none; 
+			color:#fff;
+			
+			@media (max-height: $breakHeight){
+				margin-top: 34px;	
+			}
+		}
+		
+		@media (min-width: $smallWidth){
+			width:100%;
+		}	
+	}
+}
+#container {
+	width:800px;
+	margin:0px auto;
+	
+	@media(min-width:$largeWidth){
+		width:905px;
+	}
+	
+	#wrapper{
+		@include calc(height,"100vh - 120px");
+		
+		@media (max-height: $breakHeight){
+			@include calc(height,"100vh - 130px");			
+		}
+		
+	}
+	
+	.secondaryNav{
+		display:none;
+	}
+	@media (max-height: $breakHeight){
+		/*This element is only present when the height is broken*/
+		.secondaryNav{
+			background-color:$teal-dark;
+			display:block;
+			height:40px;
+			width:100%;
+			border-top:1px solid #231F20;
+			
+			.navLinkContainer {
+				height:100%;
+				width:100%;
+				
+				.navLink {					
+					width: 113px;
+					float: left;			
+					color:#fff;
+					margin-top: 5px;
+					margin-left: 11px;	
+
+					a.linkDisable {
+						color:#027B7B;						
+					}
+					a {
+						color:#fff;
+						text-decoration:none;
+					}					
+				}
+			}
+		}
+	}
+	
+	#nav {
+		width:150px;
+		height: 100%;
+		float:left;
+		background-color:$teal-dull;
+		border-left:1px solid #231F20;
+		font-size:14px;
+		
+		.navLinkContainer {
+			width:100%;
+			
+			.navLink {
+				width:100%;
+				height:30px;
+				line-height:26px;
+
+				a.linkDisable {
+					color:#027B7B;
+				}				
+				
+				a {
+					margin-left:12px;
+					color:$black;
+					text-decoration:none;
+				}
+				a.white{
+					color:#fff !important;
+				}
+			}
+		}
+		.navLinkContainer:first-child {
+			padding-top:12px;
+		}
+		
+		#primaryNav{
+			width:100%;
+			height:200px;
+			border-bottom:1px solid #231F20;
+			overflow-y: auto;
+			overflow-x: auto;			
+			@media (max-height: $breakHeight){
+				height:100%;
+			}
+		}
+		.secondaryNav{
+			color:#fff;			
+			background-color:$teal-dark;
+			@include calc(height,"100vh - 320px ");
+			display:block;
+			
+			@media (max-height: $breakHeight){
+				display:none;
+			}
+		}
+	}
+	
+	#content {
+		width:647px;
+		height:100%;
+		display:inline-block;
+		background-color:$teal-pale;
+		border-left:1px solid #231F20;
+		border-right:1px solid #231F20;
+		
+		h1, p {
+			padding: 0px 44px;
+		}
+		h1 {
+			font-size:24px;
+			font-weight:500;
+		}
+		p {
+			text-indent:31px;
+			line-height: 29px;
+			font-size:14px;
+		}
+		
+
+		@media(min-width:$largeWidth){
+			width:752px;
+		}
+		
+		@media (max-height: $breakHeight){
+			overflow-y:scroll;
+		}
+		
+		h2 {
+			margin-left:20px;
+			margin-bottom:0px;
+			color:#fff;
+		}
+
+		#simpleFsList{
+			width:100%;
+			padding:20px 0px;
+			
+			.navLink {
+				height:30px;
+
+				a {
+					width:100%;
+					margin-left:20px;
+					line-height:30px;
+					
+				}
+			}
+			
+		}
+	}
+}

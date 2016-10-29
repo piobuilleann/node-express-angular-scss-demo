@@ -1,0 +1,14 @@
+div(ng-controller="DirectoryController")
+  if dir
+    a(ui-sref="simpleFS") ../
+  h2= dir
+  if dir
+    button(ng-click="deleteDir('#{dir}')") Delete Directory
+  div#simpleFsList
+    each file in directory
+      if (typeof(file) !== "undefined")
+        div.navLink
+          if dir
+            a(ui-sref='simpleFS.viewFileInDir({file:"#{file}", dir:"#{dir}"})')= file
+          if !dir
+            a(ui-sref='simpleFS.viewFile({file:"#{file}"})')= file

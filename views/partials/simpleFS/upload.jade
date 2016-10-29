@@ -1,0 +1,6 @@
+form(ng-controller='UploadController')
+  input(type='file', nv-file-select, uploader='uploader')
+  ul
+    li(ng-repeat="item in uploader.queue")
+      span(ng-bind="item.file.name")
+      button(ng-click="item.upload()") upload
